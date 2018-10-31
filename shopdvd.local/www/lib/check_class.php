@@ -30,4 +30,21 @@ class Check
         if (!$this->intNumber($number)) return false;
         return (($number == 0) || ($number == 1));
     }
+
+    public function count($count)
+    {
+        return $this->noNegativeInteger($count);
+    }
+
+    public function offset($offset)
+    {
+        return $this->intNumber($offset);
+    }
+
+    private function noNegativeInteger($number)
+    {
+        if (!$this->intNumber($number)) return false;
+
+        return ($number >= 0);
+    }
 }
