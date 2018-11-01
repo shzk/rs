@@ -24,6 +24,17 @@ class URL
         return $this->config->address.$uri;
     }
 
+    public function getView()
+    {
+        $view = $_SERVER["REQUEST_URI"];
+        $view = substr($view, 1);
+        if (($pos = strpos($view, "?")) !== false) {
+            $view = substr($view, 0, $pos);
+        }
+
+        return $view;
+    }
+
     private function deleteGET($url, $param)
     {
         $res = $url;
