@@ -82,4 +82,34 @@ class URL
     {
         return $this->returnURL("cart");
     }
+
+    public function delivery()
+    {
+        return $this->returnURL("delivery");
+    }
+
+    public function contacts()
+    {
+        return $this->returnURL("contacts");
+    }
+
+    public function search()
+    {
+        return $this->returnURL("search");
+    }
+
+    public function section($id)
+    {
+        return $this->returnURL("section?id=$id");
+    }
+
+    public function product($id)
+    {
+        return $this->returnURL("product?id=$id");
+    }
+
+    public function addCart($id)
+    {
+        return $this->returnURL("functions.php?func=add_cart&id=$id");
+    }
 }

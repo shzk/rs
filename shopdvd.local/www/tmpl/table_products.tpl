@@ -8,9 +8,8 @@
 				</figure>
 				<div class="block-4-text p-4">
 					<h3><a href="<?=$this->products[$i]["link"]?>"><?=$this->products[$i]["title"]?></a></h3>
-					<p class="mb-0">Finding perfect t-shirt</p>
 					<p class="text-primary font-weight-bold"><?=$this->products[$i]["price"]?> руб.</p>
-					<a href="<?=$this->products[$i]["link_cart"]?>"></a>
+					<a href="<?=$this->products[$i]["link_cart"]?>">add</a>
 				</div>
 			</div>
 		</div>

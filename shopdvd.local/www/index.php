@@ -9,7 +9,7 @@ $class = $view."Content";
 
 if (file_exists($dir_lib.$class."_class.php")) {
     require_once $dir_lib.$class."_class.php";
-    new class();
+    new $class();
 } else {
     echo "404";
 }

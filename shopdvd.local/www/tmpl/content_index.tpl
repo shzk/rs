@@ -11,7 +11,7 @@
 			<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
 			<ul class="list-unstyled mb-0">
 				<?php for ($i=0; $i < count($this->items); $i++) { ?>
-				<li class="mb-1"><a href="#" class="d-flex"><span>Men</span></a></li>
+				<li class="mb-1"><a href="<?=$this->items[$i]["link"]?>" class="d-flex"><span><?=$this->items[$i]["title"]?></span></a></li>
 				<?php } ?>
 			</ul>
 		</div>

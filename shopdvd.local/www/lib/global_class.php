@@ -65,4 +65,15 @@ abstract class GlobalClass
 
         return $limit;
     }
+
+    protected function transform($element)
+    {
+        if (!$element) return false;
+        if (isset($element[0])) {
+            for ($i = 0; $i < count($element); $i++) {
+                $element[$i] = $this->transformElement($element[$i]);
+            }
+            return $element;
+        } else return $this->transformElement($element);
+    }
 }
