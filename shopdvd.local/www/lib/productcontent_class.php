@@ -14,6 +14,7 @@ class ProductContent extends Modules
         $this->title = $product_info["title"];
         $this->meta_desc = "Movie ".$product_info["title"];
         $this->meta_key = mb_strtolower($product_info["title"]);
+        $this->template->set("link_section", $this->url->section($product_info["section_id"]));
         $this->template->set("product", $product_info);
 
         return "product";
