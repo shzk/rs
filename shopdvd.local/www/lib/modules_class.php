@@ -41,5 +41,16 @@ abstract class Modules
         $this->template->display("main");
     }
 
+    protected function notFound()
+    {
+        $this->redirect($this->url->notFound());
+    }
+
+    protected function redirect($link)
+    {
+        header("Location: $link");
+        exit;
+    }
+
     abstract protected function getContent();
 }

@@ -11,5 +11,6 @@ if (file_exists($dir_lib.$class."_class.php")) {
     require_once $dir_lib.$class."_class.php";
     new $class();
 } else {
-    echo "404";
+    require_once $dir_lib."notfoundcontent_class.php";
+    new NotFoundContent();
 }

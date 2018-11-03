@@ -112,4 +112,9 @@ class URL
     {
         return $this->returnURL("functions.php?func=add_cart&id=$id");
     }
+
+    public function notFound()
+    {
+        return $this->returnURL("notfound");
+    }
 }
