@@ -68,6 +68,7 @@ abstract class GlobalClass
 
     public function get($id)
     {
+        if (!$this->check->id($id)) return false;
         return $this->getOnField("id", $id);
     }
 
@@ -76,6 +77,11 @@ abstract class GlobalClass
         $query = "SELECT * FROM `".$this->table_name."` WHERE `$field` = ".$this->config->sym_query;
 
         return $this->db->selectRow($query, $value);
+    }
+
+    public function getTableName()
+    {
+        return $this->table_name;
     }
 
     protected function transform($element)

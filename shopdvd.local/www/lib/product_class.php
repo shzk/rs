@@ -42,6 +42,27 @@ class Product extends GlobalClass
         $product["img"] = $this->config->dir_img_products.$product["img"];
         $product["link"] = $this->url->product($product["id"]);
         $product["link_cart"] = $this->url->addCart($product["id"]);
+        $product["description"] = str_replace("\n", "<br>", $product["description"]);
         return $product;
+    }
+
+    public function get($id, $section_table) {
+        if (!$this->check->id($id)) return false;
+        $query = "SELECT `".$this->table_name."`.`id`,
+		`".$this->table_name."`.`section_id`,
+		`".$this->table_name."`.`img`,
+		`".$this->table_name."`.`title`,
+		`".$this->table_name."`.`price`,
+		`".$this->table_name."`.`year`,
+		`".$this->table_name."`.`country`,
+		`".$this->table_name."`.`director`,
+		`".$this->table_name."`.`play`,
+		`".$this->table_name."`.`cast`,
+		`".$this->table_name."`.`description`,
+		`$section_table`.`title` as `section`
+		FROM `".$this->table_name."`
+		INNER JOIN `$section_table` ON `$section_table`.`id` = `".$this->table_name."`.`section_id`
+		WHERE `".$this->table_name."`.`id` = ".$this->config->sym_query;
+        return $this->transform($this->db->selectRow($query, array($id)));
     }
 }

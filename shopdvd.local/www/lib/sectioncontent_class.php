@@ -10,11 +10,10 @@ class SectionContent extends Modules
     protected function getContent()
     {
         $section_info = $this->section->get($this->data["id"]);
-
+        if (!$section_info) return $this->notFound();
         $this->title = $section_info["title"];
         $this->meta_desc = "List films from ".$section_info["title"]." category";
         $this->meta_key = mb_strtolower($section_info["title"]);
-
         $this->setLinkSort();
         @$sort = $this->data["sort"];
         @$up = $this->data["up"];
