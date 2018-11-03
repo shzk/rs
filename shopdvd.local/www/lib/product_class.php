@@ -26,6 +26,12 @@ class Product extends GlobalClass
         return $this->transform($this->db->select($query));
     }
 
+    public function getAllOnSectionId($section_id, $sort, $up)
+    {
+        if (!$this->checkSortUp($sort, $up)) return $this->transform($this->getAllOnField("section_id", $section_id));
+        return $this->transform($this->getAllOnField("section_id", $section_id, $sort, $up));
+    }
+
     private function checkSortUp($sort, $up)
     {
         return ((($sort === "title") || ($sort === "price")) && (($up === '1') || ($up === '0')));

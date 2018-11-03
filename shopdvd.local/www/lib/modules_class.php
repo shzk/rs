@@ -28,6 +28,7 @@ abstract class Modules
         $this->section = new Section();
         $this->product = new Product();
 
+        $this->template->set("content", $this->getContent());
         $this->template->set("title", $this->title);
         $this->template->set("meta_desc", $this->meta_desc);
         $this->template->set("meta_key", $this->meta_key);
@@ -36,7 +37,6 @@ abstract class Modules
         $this->template->set("link_contacts", $this->url->contacts());
         $this->template->set("link_cart", $this->url->cart());
         $this->template->set("link_search", $this->url->search());
-        $this->template->set("content", $this->getContent());
         $this->template->set("items", $this->section->getAllData());
         $this->template->display("main");
     }

@@ -66,6 +66,18 @@ abstract class GlobalClass
         return $limit;
     }
 
+    public function get($id)
+    {
+        return $this->getOnField("id", $id);
+    }
+
+    protected function getOnField($field, $value)
+    {
+        $query = "SELECT * FROM `".$this->table_name."` WHERE `$field` = ".$this->config->sym_query;
+
+        return $this->db->selectRow($query, $value);
+    }
+
     protected function transform($element)
     {
         if (!$element) return false;
