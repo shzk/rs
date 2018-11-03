@@ -14,6 +14,23 @@ class Product extends GlobalClass
         return $this->transform($this->getAll("date", false, $count));
     }
 
+    public function getAllSort($sort, $up, $count)
+    {
+        if (!$this->checkSortUp($sort, $up)) return $this->getAllData($count);
+        $l = $this->getL($count, 0);
+        $desc = "";
+        if (!$up) $desc = "DESC";
+        $query = "SELECT * FROM 
+          (SELECT * FROM `".$this->table_name."` ORDER BY `date` DESC $l) a
+          ORDER BY `$sort` $desc";
+        return $this->transform($this->db->select($query));
+    }
+
+    private function checkSortUp($sort, $up)
+    {
+        return ((($sort === "title") || ($sort === "price")) && (($up === '1') || ($up === '0')));
+    }
+
     protected function transformElement($product)
     {
         $product["img"] = $this->config->dir_img_products.$product["img"];

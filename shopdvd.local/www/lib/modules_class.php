@@ -52,5 +52,13 @@ abstract class Modules
         exit;
     }
 
+    protected function setLinkSort()
+    {
+        $this->template->set("link_price_up", $this->url->sortPriceUp());
+        $this->template->set("link_price_down", $this->url->sortPriceDown());
+        $this->template->set("link_title_up", $this->url->sortTitleUp());
+        $this->template->set("link_title_down", $this->url->sortTitleDown());
+    }
+
     abstract protected function getContent();
 }

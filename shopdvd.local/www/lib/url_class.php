@@ -38,7 +38,7 @@ class URL
     private function deleteGET($url, $param)
     {
         $res = $url;
-        if ($p = strpos($res, "?") !== false ) {
+        if (($p = strpos($res, "?")) !== false ) {
             $paramstr = substr($res, $p + 1);
             $params = explode("&", $paramstr);
             $paramsarr = array();
@@ -71,6 +71,36 @@ class URL
         if ($this->amp) $url = str_replace("&", "&amp;", $url);
 
         return $url;
+    }
+
+    private function sortOnField($field, $up)
+    {
+        $this_url = $this->getThisURL();
+        $this_url = $this->deleteGET($this_url, "sort");
+        $this_url = $this->deleteGET($this_url, "up");
+        if (strpos($this_url, "?") === false) $url = $this_url."?sort=$field&up=$up";
+        else $url = $this_url."sort=$field&up=$up";
+        return $this->returnURL($url);
+    }
+
+    public function sortTitleUp()
+    {
+        return $this->sortOnField("title", 1);
+    }
+
+    public function sortTitleDown()
+    {
+        return $this->sortOnField("title", 0);
+    }
+
+    public function sortPriceUp()
+    {
+        return $this->sortOnField("price", 1);
+    }
+
+    public function sortPriceDown()
+    {
+        return $this->sortOnField("price", 0);
     }
 
     public function index()
