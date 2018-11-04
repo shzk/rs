@@ -94,4 +94,16 @@ abstract class GlobalClass
             return $element;
         } else return $this->transformElement($element);
     }
+
+    public function existsID($id)
+    {
+        if (!$this->check->id($id)) return false;
+        return $this->isExistsFV("id",$id);
+    }
+
+    protected function isExistsFV($field, $value)
+    {
+        $result = $this->getOnField($field, $value);
+        return count($result) != 0;
+    }
 }

@@ -28,6 +28,7 @@ abstract class Modules
         $this->section = new Section();
         $this->product = new Product();
 
+        $this->setInfoCart();
         $this->template->set("content", $this->getContent());
         $this->template->set("title", $this->title);
         $this->template->set("meta_desc", $this->meta_desc);
@@ -50,6 +51,14 @@ abstract class Modules
     {
         header("Location: $link");
         exit;
+    }
+
+    private function setInfoCart()
+    {
+        $ids = explode(",", $_SESSION["cart"]);
+        $summa = $this->product->getPriceOnIDs($ids);
+        $this->template->set("cart_count", count($ids));
+        $this->template->set("cart_summa", $summa);
     }
 
     protected function setLinkSort()

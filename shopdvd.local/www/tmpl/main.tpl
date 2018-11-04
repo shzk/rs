@@ -81,9 +81,9 @@
 				<div class="col-md-12 mb-0">
 					<a href="<?=$this->index?>">Home</a>
 					<span class="mx-2 mb-0">/</span>
-					<a href="<?=$this->link_section?>"><?=$this->product["section"]?></a>
+					<a href="<?=@$this->link_section?>"><?=@$this->product["section"]?></a>
 					<span class="mx-2 mb-0">/</span>
-					<strong class="text-black"><?=$this->product["title"]?></strong></div>
+					<strong class="text-black"><?=@$this->product["title"]?></strong></div>
 			</div>
 		</div>
 	</div>

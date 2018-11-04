@@ -72,4 +72,31 @@ class Product extends GlobalClass
         $query = "SELECT * FROM `".$this->table_name."` WHERE `section_id` = ".$this->config->sym_query." AND `id` != ".$this->config->sym_query. " ORDER BY RAND() $l";
         return $this->transform($this->db->select($query, array($product_info["section_id"], $product_info["id"])));
     }
+
+    public function getPriceOnIDs($ids)
+    {
+        $products = $this->getAllOnIDs($ids);
+        $result = array();
+        for ($i = 0; $i < count($products); $i++) {
+            $result[$products[$i]["id"]] = $products[$i]["price"];
+        }
+        $summa = 0;
+        for ($i = 0; $i < count($ids); $i++) {
+            $summa += $result[$ids[$i]];
+        }
+        return $summa;
+    }
+
+    public function getAllOnIDs($ids)
+    {
+        $query_ids = "";
+        $params = array();
+        for ($i = 0; $i < count($ids); $i++) {
+            $query_ids .= $this->config->sym_query.",";
+            $params[] = $ids[$i];
+        }
+        $query_ids = substr($query_ids, 0, -1);
+        $query = "SELECT * FROM `".$this->table_name."` WHERE `id` IN ($query_ids)";
+        return $this->transform($this->db->select($query, $params));
+    }
 }
