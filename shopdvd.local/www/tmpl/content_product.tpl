@@ -42,3 +42,34 @@
 
 	</div>
 </div>
+<div class="site-section block-3 site-blocks-2 bg-light">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-7 site-section-heading text-center pt-4">
+				<h2>Featured Products</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="nonloop-block-3 owl-carousel">
+					<?php for ($i = 0; $i < count($this->products); $i++) { ?>
+					<!--region single item-->
+					<div class="item">
+						<div class="block-4 text-center">
+							<figure class="block-4-image">
+								<img src="<?=$this->products[$i]["img"]?>" alt="<?=$this->products[$i]["title"]?>" class="img-fluid">
+							</figure>
+							<div class="block-4-text p-4">
+								<h3><a href="<?=$this->products[$i]["link"]?>"><?=$this->products[$i]["title"]?></a></h3>
+								<p class="text-primary font-weight-bold"><?=$this->products[$i]["price"]?> руб.</p>
+								<p><a href="<?=$this->products[$i]["link_cart"]?>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+							</div>
+						</div>
+					</div>
+					<!--endregion-->
+					<?php }?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

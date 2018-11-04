@@ -46,7 +46,7 @@ class Product extends GlobalClass
         return $product;
     }
 
-    public function get($id, $section_table) {
+    public function getter($id, $section_table) {
         if (!$this->check->id($id)) return false;
         $query = "SELECT `".$this->table_name."`.`id`,
 		`".$this->table_name."`.`section_id`,
@@ -64,5 +64,12 @@ class Product extends GlobalClass
 		INNER JOIN `$section_table` ON `$section_table`.`id` = `".$this->table_name."`.`section_id`
 		WHERE `".$this->table_name."`.`id` = ".$this->config->sym_query;
         return $this->transform($this->db->selectRow($query, array($id)));
+    }
+
+    public function getOthers($product_info, $count)
+    {
+        $l = $this->getL($count, 0);
+        $query = "SELECT * FROM `".$this->table_name."` WHERE `section_id` = ".$this->config->sym_query." AND `id` != ".$this->config->sym_query. " ORDER BY RAND() $l";
+        return $this->transform($this->db->select($query, array($product_info["section_id"], $product_info["id"])));
     }
 }

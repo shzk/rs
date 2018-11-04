@@ -19,7 +19,7 @@ class Config
     public $adm_password = "6deaff5c019acfc2800e7f83a1a7456f";
 
     public $count_on_page = 9;
-    public $count_others = 6;
+    public $count_others = 10;
 
     public $pagination_count = 10;
 
