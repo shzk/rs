@@ -49,6 +49,7 @@
 									<a href="<?=$this->link_cart?>" class="site-cart">
 										<span class="icon icon-shopping_cart"></span>
 										<span class="count"><?=$this->cart_count?></span>
+										<span ><?=$this->cart_summa?></span>
 									</a>
 								</li>
 								<li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>

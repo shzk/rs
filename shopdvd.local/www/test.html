@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="zayavka">
+    <form action="send.php" method="post">
+
+      <p>Отправьте заявку и получите<br> бесплатную консультацию</p>
+      <input type="text" name="name" placeholder="Имя">
+      <input type="text" name="phone" id="phone" placeholder="Телефон">
+      <br>
+      <span>Сумма вашего долга:</span>
+      <div class="summa">
+        <input type="radio" value="200" name="check">До 200.000р
+        <input type="radio" value="300" name="check">от 200.000р до 500.000
+        <input type="radio" value="500" name="check"> от 500.000р
+      </div>
+      <input type="submit" class="submit_form" placeholder="Отправить">
+    </form>
+  </div>
+</body>
+
+</html>
